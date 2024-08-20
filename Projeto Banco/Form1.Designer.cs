@@ -107,6 +107,7 @@
             this.Txt_TitularConta.Name = "Txt_TitularConta";
             this.Txt_TitularConta.Size = new System.Drawing.Size(396, 43);
             this.Txt_TitularConta.TabIndex = 7;
+            this.Txt_TitularConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_TitularConta_KeyPress);
             // 
             // Btn_Saque
             // 

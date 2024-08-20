@@ -42,10 +42,10 @@ namespace Projeto_Banco
 
         private void Txt_Agencia_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber (e.KeyChar) && !char.IsControl(e.KeyChar))//condição para aceitar somente numeros e teclas de controle
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))//condição para aceitar somente numeros e teclas de controle
             {
                 e.Handled = true;
-                MessageBox.Show("Digite apenas números", "Aviso", MessageBoxButtons.OK,  MessageBoxIcon.Exclamation);
+                MessageBox.Show("Digite apenas números", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             if (e.KeyChar == 13)// verificação do acinoamento da tecla enter
             {
@@ -64,25 +64,49 @@ namespace Projeto_Banco
 
         private void Txt_NConta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsNumber(e.KeyChar) && !char.IsControl (e.KeyChar))
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
                 MessageBox.Show("Digite apenas numeros", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            if (e.KeyChar ==13)
+            if (e.KeyChar == 13)
             {
 
                 if (Txt_NConta.TextLength == 5)
                 {
                     Txt_TitularConta.Focus();
                 }
-                 else
+                else
                 {
                     MessageBox.Show("É necessário digitar os 5 números da conta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            
-           
+
+
+        }
+
+        private void Txt_TitularConta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Digite apenas letras ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            if (e.KeyChar == 13)
+            {
+                
+                if (Txt_TitularConta.TextLength >=3)
+                {
+                    Txt_Valor.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("É necessário digitar ao menos 3 letras para o nome", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+
+                }
+
+            }
         }
     }
 }
