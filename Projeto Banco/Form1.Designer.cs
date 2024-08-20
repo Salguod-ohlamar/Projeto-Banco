@@ -96,6 +96,7 @@
             this.Txt_NConta.Name = "Txt_NConta";
             this.Txt_NConta.Size = new System.Drawing.Size(212, 43);
             this.Txt_NConta.TabIndex = 5;
+            this.Txt_NConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_NConta_KeyPress);
             // 
             // Txt_TitularConta
             // 

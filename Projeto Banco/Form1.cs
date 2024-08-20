@@ -61,5 +61,28 @@ namespace Projeto_Banco
 
             }
         }
+
+        private void Txt_NConta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl (e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Digite apenas numeros", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            if (e.KeyChar ==13)
+            {
+
+                if (Txt_NConta.TextLength == 5)
+                {
+                    Txt_TitularConta.Focus();
+                }
+                 else
+                {
+                    MessageBox.Show("É necessário digitar os 5 números da conta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            
+           
+        }
     }
 }
