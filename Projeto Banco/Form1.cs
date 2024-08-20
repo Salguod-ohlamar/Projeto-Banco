@@ -39,5 +39,27 @@ namespace Projeto_Banco
             conta.depositar();
             Txt_Saldo_Disponivel.Text = conta.saldo.ToString();
         }
+
+        private void Txt_Agencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber (e.KeyChar) && !char.IsControl(e.KeyChar))//condição para aceitar somente numeros e teclas de controle
+            {
+                e.Handled = true;
+                MessageBox.Show("Digite apenas números", "Aviso", MessageBoxButtons.OK,  MessageBoxIcon.Exclamation);
+            }
+            if (e.KeyChar == 13)// verificação do acinoamento da tecla enter
+            {
+                if (Txt_Agencia.TextLength == 4)//condição para verificar a quantidade de digito
+                {
+                    Txt_NConta.Focus();//posicona o cursos para o proximo foco
+                }
+                else
+                {
+                    MessageBox.Show("è necessário digitar os 4 digitos de agência", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+
+            }
+        }
     }
 }

@@ -85,6 +85,7 @@
             this.Txt_Agencia.Name = "Txt_Agencia";
             this.Txt_Agencia.Size = new System.Drawing.Size(212, 43);
             this.Txt_Agencia.TabIndex = 4;
+            this.Txt_Agencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Agencia_KeyPress);
             // 
             // Txt_NConta
             // 
