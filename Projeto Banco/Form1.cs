@@ -108,5 +108,26 @@ namespace Projeto_Banco
 
             }
         }
+
+        private void Txt_Valor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && char.IsControl(e.KeyChar))
+            {
+                e.Handled= true;
+            }
+            if (e.KeyChar == 13)
+            {
+                if (Txt_Valor.Text != "")
+                {
+                    MessageBox.Show("Utilize os botôes de 'Saque' ou 'Deposito'", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                else
+                {
+                    MessageBox.Show(" Informe um valor para continuar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+
+        }
     }
 }

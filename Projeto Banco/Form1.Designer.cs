@@ -162,6 +162,7 @@
             this.Txt_Valor.Name = "Txt_Valor";
             this.Txt_Valor.Size = new System.Drawing.Size(212, 43);
             this.Txt_Valor.TabIndex = 12;
+            this.Txt_Valor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Valor_KeyPress);
             // 
             // Txt_Saldo_Disponivel
             // 
