@@ -107,7 +107,7 @@ namespace Projeto_Banco
 
                 if (Txt_TitularConta.TextLength >= 3)
                 {
-                    Txt_Valor.Focus();
+                    Txt_idade.Focus();
                 }
                 else
                 {
