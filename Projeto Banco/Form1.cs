@@ -12,23 +12,31 @@ namespace Projeto_Banco
 
         Conta_Bancaria conta = new Conta_Bancaria();
 
+        int contador_saque, contador_deposito;
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Txt_Saldo_Disponivel.Text = conta.saldo.ToString();
+            Txt_Saldo.Text = conta.saldo.ToString();
         }
 
         private void Btn_Saque_Click(object sender, EventArgs e)
         {
-            if (Txt_Valor.Text != "")
+            if (Txt_Agencia.TextLength == 4 && Txt_NConta.TextLength == 5
+                 && Txt_TitularConta.TextLength >= 3 && Txt_Valor.Text != "")
             {
+                conta.agencia = int.Parse(Txt_Agencia.Text);
+                conta.n_conta = int.Parse(Txt_NConta.Text);
+                conta.TitularConta = Txt_TitularConta.Text;
                 conta.valor = double.Parse(Txt_Valor.Text);
-                conta.sacar();
-                Txt_Saldo_Disponivel.Text = conta.saldo.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Você precisa informar uma valor para sacar", "Aviso");
+
+                if (conta.saldo >= conta.valor)
+                {
+                    conta.sacar();
+                    Txt_Saldo.Text = conta.saldo.ToString();
+                    contador_saque++;
+                    Lbl_conta_saque.Text = contador_saque.ToString();
+                }
             }
 
         }
@@ -37,7 +45,9 @@ namespace Projeto_Banco
         {
             conta.valor = double.Parse(Txt_Valor.Text);
             conta.depositar();
-            Txt_Saldo_Disponivel.Text = conta.saldo.ToString();
+            Txt_Saldo.Text = conta.saldo.ToString();
+            contador_deposito++;
+            Lbl_Conta_Deposito.Text = contador_deposito.ToString();
         }
 
         private void Txt_Agencia_KeyPress(object sender, KeyPressEventArgs e)
@@ -94,8 +104,8 @@ namespace Projeto_Banco
             }
             if (e.KeyChar == 13)
             {
-                
-                if (Txt_TitularConta.TextLength >=3)
+
+                if (Txt_TitularConta.TextLength >= 3)
                 {
                     Txt_Valor.Focus();
                 }
@@ -113,7 +123,7 @@ namespace Projeto_Banco
         {
             if (!char.IsNumber(e.KeyChar) && char.IsControl(e.KeyChar))
             {
-                e.Handled= true;
+                e.Handled = true;
             }
             if (e.KeyChar == 13)
             {
@@ -128,6 +138,68 @@ namespace Projeto_Banco
                 }
             }
 
+        }
+
+        private void Txt_idade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) && char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == 13)
+            {
+                if (Txt_idade.Text != "")
+                {
+                    conta.idade = int.Parse(Txt_idade.Text);
+
+                    if (conta.idade >= 18)
+                    {
+                        Txt_mes_Nasc.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"'{conta.idade}'anos. Idade insuficiente, precisa ter maioridade ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+
+
+            }
+
+        }
+
+        private void Txt_mes_Nasc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))//condiçãao para aceitar somente numeros e teclaas e controle
+            {
+                e.Handled = true;//verificando se é somente número
+
+                MessageBox.Show("Somente números!!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            if (e.KeyChar == 13)//condição para tclar o "enter"
+            {
+                conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
+                if (Txt_mes_Nasc.Text != "")//condição para verificar se o campo esta vazio
+                {
+                    if (conta.mes_nascimento > 0 && conta.mes_nascimento < 13)
+                    {
+                        Txt_Valor.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{conta.mes_nascimento}, nao é um mês valido`", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
+                }
+                else// mensagem para notificação de falta de digito
+                {
+                    MessageBox.Show("É necessário digitar 3 digito para a idade", "Aviso", MessageBoxButtons.OK);
+                }
+            }
         }
     }
 }

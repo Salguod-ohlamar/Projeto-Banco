@@ -4,35 +4,22 @@ namespace Projeto_Banco
 {
     internal class Conta_Bancaria
     {
-        public int agencia, n_conta;
+        public int agencia, n_conta, idade, mes_nascimento;
         public double valor, saldo = 100;
-
+        public string TitularConta;
 
         public void sacar()
         {
             if (saldo >= valor)
             {
                 saldo = saldo - valor;
+                MessageBox.Show($"Você sacou 'R$: {valor}' com sucesso!", "Aviso");
             }
 
 
-            else
-            {
-                DialogResult resultado = MessageBox.Show($"Saldo insuficiente! apenas {saldo}," +
-                    $" poderá ser retirado, deseja continuar?", "Aviso", MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
+           
 
-                if (resultado == DialogResult.Yes)
-                {
-                    saldo = 0;
-
-                }
-                else
-                {
-                    MessageBox.Show("Operação Cancelada. O saldo permanece inalterado", "Aviso");
-                }
-
-            }
+            
         }
 
         public void depositar()
@@ -40,7 +27,7 @@ namespace Projeto_Banco
 
             saldo += valor;
 
-            MessageBox.Show($"O deposito {valor} foi efetivado com sucesso!", "Aviso");
+            MessageBox.Show($"O deposito 'R$: {valor}' foi efetivado com sucesso!", "Aviso");
         }
 
 

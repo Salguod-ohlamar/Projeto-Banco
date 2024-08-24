@@ -39,15 +39,22 @@
             this.Lbl_Valor = new System.Windows.Forms.Label();
             this.Lbl_SaldoDisponivel = new System.Windows.Forms.Label();
             this.Txt_Valor = new System.Windows.Forms.TextBox();
-            this.Txt_Saldo_Disponivel = new System.Windows.Forms.TextBox();
+            this.Txt_Saldo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Lbl_idade = new System.Windows.Forms.Label();
+            this.Txt_idade = new System.Windows.Forms.TextBox();
+            this.Txt_mes_Nasc = new System.Windows.Forms.TextBox();
+            this.Lbl_mes_Nascimento = new System.Windows.Forms.Label();
+            this.Lbl_conta_saque = new System.Windows.Forms.Label();
+            this.Lbl_Conta_Deposito = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Lbl_Agencia
             // 
             this.Lbl_Agencia.AutoSize = true;
             this.Lbl_Agencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Agencia.Location = new System.Drawing.Point(104, 72);
+            this.Lbl_Agencia.Location = new System.Drawing.Point(27, 58);
             this.Lbl_Agencia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_Agencia.Name = "Lbl_Agencia";
             this.Lbl_Agencia.Size = new System.Drawing.Size(140, 37);
@@ -58,7 +65,7 @@
             // 
             this.Lbl_NAgencia.AutoSize = true;
             this.Lbl_NAgencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_NAgencia.Location = new System.Drawing.Point(316, 72);
+            this.Lbl_NAgencia.Location = new System.Drawing.Point(250, 58);
             this.Lbl_NAgencia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_NAgencia.Name = "Lbl_NAgencia";
             this.Lbl_NAgencia.Size = new System.Drawing.Size(197, 37);
@@ -69,7 +76,7 @@
             // 
             this.Lbl_TitulatConta.AutoSize = true;
             this.Lbl_TitulatConta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_TitulatConta.Location = new System.Drawing.Point(668, 72);
+            this.Lbl_TitulatConta.Location = new System.Drawing.Point(504, 58);
             this.Lbl_TitulatConta.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_TitulatConta.Name = "Lbl_TitulatConta";
             this.Lbl_TitulatConta.Size = new System.Drawing.Size(263, 37);
@@ -79,7 +86,7 @@
             // Txt_Agencia
             // 
             this.Txt_Agencia.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.Txt_Agencia.Location = new System.Drawing.Point(53, 103);
+            this.Txt_Agencia.Location = new System.Drawing.Point(4, 113);
             this.Txt_Agencia.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_Agencia.MaxLength = 4;
             this.Txt_Agencia.Name = "Txt_Agencia";
@@ -90,7 +97,7 @@
             // Txt_NConta
             // 
             this.Txt_NConta.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.Txt_NConta.Location = new System.Drawing.Point(311, 103);
+            this.Txt_NConta.Location = new System.Drawing.Point(248, 113);
             this.Txt_NConta.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_NConta.MaxLength = 5;
             this.Txt_NConta.Name = "Txt_NConta";
@@ -101,18 +108,18 @@
             // Txt_TitularConta
             // 
             this.Txt_TitularConta.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.Txt_TitularConta.Location = new System.Drawing.Point(577, 103);
+            this.Txt_TitularConta.Location = new System.Drawing.Point(511, 113);
             this.Txt_TitularConta.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_TitularConta.MaxLength = 30;
             this.Txt_TitularConta.Name = "Txt_TitularConta";
-            this.Txt_TitularConta.Size = new System.Drawing.Size(396, 43);
+            this.Txt_TitularConta.Size = new System.Drawing.Size(290, 43);
             this.Txt_TitularConta.TabIndex = 7;
             this.Txt_TitularConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_TitularConta_KeyPress);
             // 
             // Btn_Saque
             // 
             this.Btn_Saque.BackColor = System.Drawing.Color.Yellow;
-            this.Btn_Saque.Location = new System.Drawing.Point(82, 194);
+            this.Btn_Saque.Location = new System.Drawing.Point(15, 189);
             this.Btn_Saque.Margin = new System.Windows.Forms.Padding(6);
             this.Btn_Saque.Name = "Btn_Saque";
             this.Btn_Saque.Size = new System.Drawing.Size(162, 44);
@@ -124,7 +131,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Lime;
-            this.button1.Location = new System.Drawing.Point(311, 194);
+            this.button1.Location = new System.Drawing.Point(15, 250);
             this.button1.Margin = new System.Windows.Forms.Padding(6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 44);
@@ -137,7 +144,7 @@
             // 
             this.Lbl_Valor.AutoSize = true;
             this.Lbl_Valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Valor.Location = new System.Drawing.Point(585, 150);
+            this.Lbl_Valor.Location = new System.Drawing.Point(39, 317);
             this.Lbl_Valor.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_Valor.Name = "Lbl_Valor";
             this.Lbl_Valor.Size = new System.Drawing.Size(98, 37);
@@ -148,7 +155,7 @@
             // 
             this.Lbl_SaldoDisponivel.AutoSize = true;
             this.Lbl_SaldoDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_SaldoDisponivel.Location = new System.Drawing.Point(788, 152);
+            this.Lbl_SaldoDisponivel.Location = new System.Drawing.Point(219, 317);
             this.Lbl_SaldoDisponivel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_SaldoDisponivel.Name = "Lbl_SaldoDisponivel";
             this.Lbl_SaldoDisponivel.Size = new System.Drawing.Size(270, 37);
@@ -157,22 +164,22 @@
             // 
             // Txt_Valor
             // 
-            this.Txt_Valor.Location = new System.Drawing.Point(537, 195);
+            this.Txt_Valor.Location = new System.Drawing.Point(4, 360);
             this.Txt_Valor.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_Valor.Name = "Txt_Valor";
             this.Txt_Valor.Size = new System.Drawing.Size(212, 43);
             this.Txt_Valor.TabIndex = 12;
             this.Txt_Valor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Valor_KeyPress);
             // 
-            // Txt_Saldo_Disponivel
+            // Txt_Saldo
             // 
-            this.Txt_Saldo_Disponivel.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Txt_Saldo_Disponivel.Enabled = false;
-            this.Txt_Saldo_Disponivel.Location = new System.Drawing.Point(795, 195);
-            this.Txt_Saldo_Disponivel.Margin = new System.Windows.Forms.Padding(6);
-            this.Txt_Saldo_Disponivel.Name = "Txt_Saldo_Disponivel";
-            this.Txt_Saldo_Disponivel.Size = new System.Drawing.Size(212, 43);
-            this.Txt_Saldo_Disponivel.TabIndex = 13;
+            this.Txt_Saldo.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Txt_Saldo.Enabled = false;
+            this.Txt_Saldo.Location = new System.Drawing.Point(248, 360);
+            this.Txt_Saldo.Margin = new System.Windows.Forms.Padding(6);
+            this.Txt_Saldo.Name = "Txt_Saldo";
+            this.Txt_Saldo.Size = new System.Drawing.Size(212, 43);
+            this.Txt_Saldo.TabIndex = 13;
             // 
             // label1
             // 
@@ -184,14 +191,83 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Banco - Invista seu $";
             // 
+            // Lbl_idade
+            // 
+            this.Lbl_idade.AutoSize = true;
+            this.Lbl_idade.Location = new System.Drawing.Point(841, 58);
+            this.Lbl_idade.Name = "Lbl_idade";
+            this.Lbl_idade.Size = new System.Drawing.Size(101, 37);
+            this.Lbl_idade.TabIndex = 15;
+            this.Lbl_idade.Text = "Idade";
+            // 
+            // Txt_idade
+            // 
+            this.Txt_idade.Location = new System.Drawing.Point(848, 113);
+            this.Txt_idade.MaxLength = 3;
+            this.Txt_idade.Name = "Txt_idade";
+            this.Txt_idade.Size = new System.Drawing.Size(100, 43);
+            this.Txt_idade.TabIndex = 18;
+            this.Txt_idade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_idade_KeyPress);
+            // 
+            // Txt_mes_Nasc
+            // 
+            this.Txt_mes_Nasc.Location = new System.Drawing.Point(1002, 113);
+            this.Txt_mes_Nasc.MaxLength = 2;
+            this.Txt_mes_Nasc.Name = "Txt_mes_Nasc";
+            this.Txt_mes_Nasc.Size = new System.Drawing.Size(100, 43);
+            this.Txt_mes_Nasc.TabIndex = 19;
+            this.Txt_mes_Nasc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_mes_Nasc_KeyPress);
+            // 
+            // Lbl_mes_Nascimento
+            // 
+            this.Lbl_mes_Nascimento.AutoSize = true;
+            this.Lbl_mes_Nascimento.Location = new System.Drawing.Point(969, 58);
+            this.Lbl_mes_Nascimento.Name = "Lbl_mes_Nascimento";
+            this.Lbl_mes_Nascimento.Size = new System.Drawing.Size(177, 37);
+            this.Lbl_mes_Nascimento.TabIndex = 20;
+            this.Lbl_mes_Nascimento.Text = "Mês Nasc.";
+            // 
+            // Lbl_conta_saque
+            // 
+            this.Lbl_conta_saque.AutoSize = true;
+            this.Lbl_conta_saque.Location = new System.Drawing.Point(193, 193);
+            this.Lbl_conta_saque.Name = "Lbl_conta_saque";
+            this.Lbl_conta_saque.Size = new System.Drawing.Size(195, 37);
+            this.Lbl_conta_saque.TabIndex = 21;
+            this.Lbl_conta_saque.Text = "QTD Saque";
+            // 
+            // Lbl_Conta_Deposito
+            // 
+            this.Lbl_Conta_Deposito.AutoSize = true;
+            this.Lbl_Conta_Deposito.Location = new System.Drawing.Point(186, 257);
+            this.Lbl_Conta_Deposito.Name = "Lbl_Conta_Deposito";
+            this.Lbl_Conta_Deposito.Size = new System.Drawing.Size(202, 37);
+            this.Lbl_Conta_Deposito.TabIndex = 22;
+            this.Lbl_Conta_Deposito.Text = "QTD DEPO.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(83, 389);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 37);
+            this.label4.TabIndex = 23;
+            // 
             // Frm_conta_banco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(1160, 317);
+            this.ClientSize = new System.Drawing.Size(1145, 453);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Lbl_Conta_Deposito);
+            this.Controls.Add(this.Lbl_conta_saque);
+            this.Controls.Add(this.Lbl_mes_Nascimento);
+            this.Controls.Add(this.Txt_mes_Nasc);
+            this.Controls.Add(this.Txt_idade);
+            this.Controls.Add(this.Lbl_idade);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Txt_Saldo_Disponivel);
+            this.Controls.Add(this.Txt_Saldo);
             this.Controls.Add(this.Txt_Valor);
             this.Controls.Add(this.Lbl_SaldoDisponivel);
             this.Controls.Add(this.Lbl_Valor);
@@ -226,8 +302,15 @@
         private System.Windows.Forms.Label Lbl_Valor;
         private System.Windows.Forms.Label Lbl_SaldoDisponivel;
         private System.Windows.Forms.TextBox Txt_Valor;
-        private System.Windows.Forms.TextBox Txt_Saldo_Disponivel;
+        private System.Windows.Forms.TextBox Txt_Saldo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Lbl_idade;
+        private System.Windows.Forms.TextBox Txt_idade;
+        private System.Windows.Forms.TextBox Txt_mes_Nasc;
+        private System.Windows.Forms.Label Lbl_mes_Nascimento;
+        private System.Windows.Forms.Label Lbl_conta_saque;
+        private System.Windows.Forms.Label Lbl_Conta_Deposito;
+        private System.Windows.Forms.Label label4;
     }
 }
 
