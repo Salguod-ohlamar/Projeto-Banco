@@ -23,9 +23,10 @@ namespace Projeto_Banco
         private void Btn_Saque_Click(object sender, EventArgs e)
         {
             if (Txt_Agencia.TextLength == 4 && Txt_NConta.TextLength == 5
-                 && Txt_TitularConta.TextLength >= 3 && Txt_Valor.Text != ""
-                 && conta.idade >= 18 && conta.idade <= 120 && Txt_idade.Text != "" &&
-                 conta.mes_nascimento > 0 && conta.mes_nascimento < 1 && Txt_mes_Nasc.Text != "")
+         && Txt_TitularConta.TextLength >= 3 && !string.IsNullOrWhiteSpace(Txt_Valor.Text)
+         && !string.IsNullOrWhiteSpace(Txt_idade.Text) && !string.IsNullOrWhiteSpace(Txt_mes_Nasc.Text)
+         && int.TryParse(Txt_idade.Text, out int idade) && idade >= 18 && idade <= 120
+         && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && mes_nascimento > 0 && mes_nascimento <= 12)
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
                 conta.n_conta = int.Parse(Txt_NConta.Text);
@@ -47,12 +48,13 @@ namespace Projeto_Banco
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Btn_Deposito_Click(object sender, EventArgs e)
         {
             if (Txt_Agencia.TextLength == 4 && Txt_NConta.TextLength == 5
-                 && Txt_TitularConta.TextLength >= 3 && Txt_Valor.Text != ""
-                 && conta.idade >= 18 && conta.idade <= 120 && Txt_idade.Text != "" && 
-                 conta.mes_nascimento > 0 && conta.mes_nascimento < 1 && Txt_mes_Nasc.Text !="")
+         && Txt_TitularConta.TextLength >= 3 && !string.IsNullOrWhiteSpace(Txt_Valor.Text)
+         && !string.IsNullOrWhiteSpace(Txt_idade.Text) && !string.IsNullOrWhiteSpace(Txt_mes_Nasc.Text)
+         && int.TryParse(Txt_idade.Text, out int idade) && idade >= 18 && idade <= 120
+         && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && mes_nascimento > 0 && mes_nascimento <= 12)
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
                 conta.n_conta = int.Parse(Txt_NConta.Text);
@@ -61,15 +63,21 @@ namespace Projeto_Banco
                 conta.idade = int.Parse(Txt_idade.Text);
                 conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
 
-            }
-                
                 conta.valor = double.Parse(Txt_Valor.Text);
                 conta.depositar();
                 Txt_Saldo.Text = conta.saldo.ToString();
                 contador_deposito++;//contador do deposito
                 Lbl_Conta_Deposito.Text = contador_deposito.ToString();
                 Txt_Valor.Clear();
-            
+
+            }
+            else
+            {
+                MessageBox.Show("É Necessário preencher todos os campo/corriri", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
         }
 
         private void Txt_Agencia_KeyPress(object sender, KeyPressEventArgs e)
