@@ -14,6 +14,7 @@ namespace Projeto_Banco
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Frm_conta_banco());
+            //Application.Run(new Frm_investimento());
         }
     }
 }

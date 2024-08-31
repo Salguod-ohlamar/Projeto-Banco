@@ -4,8 +4,8 @@ namespace Projeto_Banco
 {
     internal class Conta_Bancaria
     {
-        public int agencia, n_conta, idade, mes_nascimento;
-        public double valor, saldo = 100;
+        public int agencia, n_conta, idade, mes_nascimento, mes;
+        public double valor, saldo, invetimento ;
         public string TitularConta;
 
         public void sacar()
@@ -17,7 +17,7 @@ namespace Projeto_Banco
             }
 
 
-           
+            
 
             
         }

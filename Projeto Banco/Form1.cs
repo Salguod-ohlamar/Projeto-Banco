@@ -23,31 +23,53 @@ namespace Projeto_Banco
         private void Btn_Saque_Click(object sender, EventArgs e)
         {
             if (Txt_Agencia.TextLength == 4 && Txt_NConta.TextLength == 5
-                 && Txt_TitularConta.TextLength >= 3 && Txt_Valor.Text != "")
+                 && Txt_TitularConta.TextLength >= 3 && Txt_Valor.Text != ""
+                 && conta.idade >= 18 && conta.idade <= 120 && Txt_idade.Text != "" &&
+                 conta.mes_nascimento > 0 && conta.mes_nascimento < 1 && Txt_mes_Nasc.Text != "")
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
                 conta.n_conta = int.Parse(Txt_NConta.Text);
                 conta.TitularConta = Txt_TitularConta.Text;
                 conta.valor = double.Parse(Txt_Valor.Text);
+                conta.idade = int.Parse(Txt_idade.Text);
+                conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
 
-                if (conta.saldo >= conta.valor)
-                {
-                    conta.sacar();
-                    Txt_Saldo.Text = conta.saldo.ToString();
-                    contador_saque++;
-                    Lbl_conta_saque.Text = contador_saque.ToString();
-                }
+                
             }
-
+            if (conta.saldo >= conta.valor)
+            {
+                conta.valor = double.Parse(Txt_Valor.Text);
+                conta.sacar();
+                Txt_Saldo.Text = conta.saldo.ToString();
+                contador_saque++;//contador do saque
+                Lbl_conta_saque.Text = contador_saque.ToString();
+                Txt_Valor.Clear();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conta.valor = double.Parse(Txt_Valor.Text);
-            conta.depositar();
-            Txt_Saldo.Text = conta.saldo.ToString();
-            contador_deposito++;
-            Lbl_Conta_Deposito.Text = contador_deposito.ToString();
+            if (Txt_Agencia.TextLength == 4 && Txt_NConta.TextLength == 5
+                 && Txt_TitularConta.TextLength >= 3 && Txt_Valor.Text != ""
+                 && conta.idade >= 18 && conta.idade <= 120 && Txt_idade.Text != "" && 
+                 conta.mes_nascimento > 0 && conta.mes_nascimento < 1 && Txt_mes_Nasc.Text !="")
+            {
+                conta.agencia = int.Parse(Txt_Agencia.Text);
+                conta.n_conta = int.Parse(Txt_NConta.Text);
+                conta.TitularConta = Txt_TitularConta.Text;
+                conta.valor = double.Parse(Txt_Valor.Text);
+                conta.idade = int.Parse(Txt_idade.Text);
+                conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
+
+            }
+                
+                conta.valor = double.Parse(Txt_Valor.Text);
+                conta.depositar();
+                Txt_Saldo.Text = conta.saldo.ToString();
+                contador_deposito++;//contador do deposito
+                Lbl_Conta_Deposito.Text = contador_deposito.ToString();
+                Txt_Valor.Clear();
+            
         }
 
         private void Txt_Agencia_KeyPress(object sender, KeyPressEventArgs e)
@@ -130,7 +152,7 @@ namespace Projeto_Banco
                 if (Txt_Valor.Text != "")
                 {
                     MessageBox.Show("Utilize os botôes de 'Saque' ou 'Deposito'", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                    Txt_Valor.Focus();
                 }
                 else
                 {
@@ -153,20 +175,40 @@ namespace Projeto_Banco
                 {
                     conta.idade = int.Parse(Txt_idade.Text);
 
-                    if (conta.idade >= 18)
+                    if (conta.idade >= 18 && conta.idade<=120)
                     {
                         Txt_mes_Nasc.Focus();
                     }
                     else
                     {
-                        MessageBox.Show($"'{conta.idade}'anos. Idade insuficiente, precisa ter maioridade ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"'{conta.idade}'anos. Idade incorreta, precisa " +
+                            $"ter maioridade, até 120 amos ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Txt_idade.Clear();
+                        Txt_idade.Focus();
                     }
 
                 }
 
-
+                
             }
 
+        }
+
+        private void Btn_investir_Click(object sender, EventArgs e)
+        {
+            conta.saldo =  double.Parse(Txt_Saldo.Text);
+
+            if (conta.saldo >= 100) //valor minimo para abrir o investimento, valor minimo
+            {
+                Frm_investimento investimentos = new Frm_investimento();//instamciando objeto investimento, chamando a tela de investimento
+                investimentos.Txt_saldo_disponivel.Text = Txt_Saldo.Text; //enviado o saldo para tela de investimentos 
+                investimentos.Show(); //abre a tela de investimento           
+                 Hide();//oculta a primeira tela
+            }
+            else
+            {
+                MessageBox.Show("È Necessário o saldo minimo de 'R$: 100'", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Txt_mes_Nasc_KeyPress(object sender, KeyPressEventArgs e)
@@ -191,6 +233,7 @@ namespace Projeto_Banco
                     else
                     {
                         MessageBox.Show($"{conta.mes_nascimento}, nao é um mês valido`", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
                     }
 
 
@@ -203,4 +246,3 @@ namespace Projeto_Banco
         }
     }
 }
-  
