@@ -26,7 +26,7 @@ namespace Projeto_Banco
          && Txt_TitularConta.TextLength >= 3 && !string.IsNullOrWhiteSpace(Txt_Valor.Text)
          && !string.IsNullOrWhiteSpace(Txt_idade.Text) && !string.IsNullOrWhiteSpace(Txt_mes_Nasc.Text)
          && int.TryParse(Txt_idade.Text, out int idade) && idade >= 18 && idade <= 120
-         && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && mes_nascimento > 0 && mes_nascimento <= 12)
+         && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && double.TryParse(Txt_Valor.Text, out double valor) && mes_nascimento > 0 && mes_nascimento <= 12)
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
                 conta.n_conta = int.Parse(Txt_NConta.Text);
@@ -35,17 +35,36 @@ namespace Projeto_Banco
                 conta.idade = int.Parse(Txt_idade.Text);
                 conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
 
-                
+                if (conta.saldo >= conta.valor)
+                {
+                    conta.valor = double.Parse(Txt_Valor.Text);
+                    conta.sacar();
+                    Txt_Saldo.Text = conta.saldo.ToString();
+                    contador_saque++;//contador do saque
+                    Lbl_conta_saque.Text = contador_saque.ToString();
+                    Txt_Valor.Clear();
+
+                    Txt_Agencia.Enabled = false;
+                    Txt_NConta.Enabled = false;
+                    Txt_TitularConta.Enabled = false;
+                    Txt_Valor.Enabled = true;
+                    Txt_idade.Enabled = false;
+                    Txt_mes_Nasc.Enabled = false;
+
+                    Txt_Valor.Focus();
+                }
+                else
+                {
+                    MessageBox.Show($"Não há saldo suficiente,para esta transação", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+
             }
-            if (conta.saldo >= conta.valor)
+            else
             {
-                conta.valor = double.Parse(Txt_Valor.Text);
-                conta.sacar();
-                Txt_Saldo.Text = conta.saldo.ToString();
-                contador_saque++;//contador do saque
-                Lbl_conta_saque.Text = contador_saque.ToString();
-                Txt_Valor.Clear();
+                MessageBox.Show("É necessário preencher todos os campos corretamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void Btn_Deposito_Click(object sender, EventArgs e)
@@ -70,10 +89,18 @@ namespace Projeto_Banco
                 Lbl_Conta_Deposito.Text = contador_deposito.ToString();
                 Txt_Valor.Clear();
 
+                Txt_Agencia.Enabled = false;
+                Txt_NConta.Enabled = false;
+                Txt_TitularConta.Enabled = false;
+                Txt_Valor.Enabled = true;
+                Txt_idade.Enabled = false;
+                Txt_mes_Nasc.Enabled = false;
+
+                Txt_Valor.Focus();
             }
             else
             {
-                MessageBox.Show("É Necessário preencher todos os campo/corriri", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("É Necessário preencher todos os campo/ ou corrigir", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -95,7 +122,7 @@ namespace Projeto_Banco
                 }
                 else
                 {
-                    MessageBox.Show("è necessário digitar os 4 digitos de agência", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("É Necessário preencher todos os campo/ ou corrigir", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 

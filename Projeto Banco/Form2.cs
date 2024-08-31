@@ -33,6 +33,11 @@ namespace Projeto_Banco
             }
         }
 
+        private void Frm_investimento_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void Btn_Voltar_Click(object sender, EventArgs e)
         {
             Frm_conta_banco banco = new Frm_conta_banco();//instanciando o objeto banco, para chamar a tela inicial
