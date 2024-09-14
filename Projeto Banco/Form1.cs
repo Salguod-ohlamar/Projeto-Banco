@@ -246,6 +246,16 @@ namespace Projeto_Banco
             }
         }
 
+        private void Txt_TitularConta_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txt_NConta_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void Txt_mes_Nasc_KeyPress(object sender, KeyPressEventArgs e)
         {
 

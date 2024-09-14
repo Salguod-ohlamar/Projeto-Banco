@@ -58,7 +58,7 @@
             this.Lbl_Agencia.Location = new System.Drawing.Point(27, 58);
             this.Lbl_Agencia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_Agencia.Name = "Lbl_Agencia";
-            this.Lbl_Agencia.Size = new System.Drawing.Size(140, 37);
+            this.Lbl_Agencia.Size = new System.Drawing.Size(97, 25);
             this.Lbl_Agencia.TabIndex = 0;
             this.Lbl_Agencia.Text = "Agência";
             // 
@@ -69,7 +69,7 @@
             this.Lbl_NAgencia.Location = new System.Drawing.Point(250, 58);
             this.Lbl_NAgencia.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_NAgencia.Name = "Lbl_NAgencia";
-            this.Lbl_NAgencia.Size = new System.Drawing.Size(197, 37);
+            this.Lbl_NAgencia.Size = new System.Drawing.Size(135, 25);
             this.Lbl_NAgencia.TabIndex = 1;
             this.Lbl_NAgencia.Text = "Nº da conta";
             // 
@@ -80,7 +80,7 @@
             this.Lbl_TitulatConta.Location = new System.Drawing.Point(504, 58);
             this.Lbl_TitulatConta.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_TitulatConta.Name = "Lbl_TitulatConta";
-            this.Lbl_TitulatConta.Size = new System.Drawing.Size(263, 37);
+            this.Lbl_TitulatConta.Size = new System.Drawing.Size(181, 25);
             this.Lbl_TitulatConta.TabIndex = 3;
             this.Lbl_TitulatConta.Text = "Titular da Conta";
             // 
@@ -91,7 +91,7 @@
             this.Txt_Agencia.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_Agencia.MaxLength = 4;
             this.Txt_Agencia.Name = "Txt_Agencia";
-            this.Txt_Agencia.Size = new System.Drawing.Size(212, 43);
+            this.Txt_Agencia.Size = new System.Drawing.Size(212, 31);
             this.Txt_Agencia.TabIndex = 4;
             this.Txt_Agencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Agencia_KeyPress);
             // 
@@ -102,8 +102,9 @@
             this.Txt_NConta.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_NConta.MaxLength = 5;
             this.Txt_NConta.Name = "Txt_NConta";
-            this.Txt_NConta.Size = new System.Drawing.Size(212, 43);
+            this.Txt_NConta.Size = new System.Drawing.Size(212, 31);
             this.Txt_NConta.TabIndex = 5;
+            this.Txt_NConta.TextChanged += new System.EventHandler(this.Txt_NConta_TextChanged);
             this.Txt_NConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_NConta_KeyPress);
             // 
             // Txt_TitularConta
@@ -113,8 +114,9 @@
             this.Txt_TitularConta.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_TitularConta.MaxLength = 30;
             this.Txt_TitularConta.Name = "Txt_TitularConta";
-            this.Txt_TitularConta.Size = new System.Drawing.Size(290, 43);
+            this.Txt_TitularConta.Size = new System.Drawing.Size(290, 31);
             this.Txt_TitularConta.TabIndex = 7;
+            this.Txt_TitularConta.TextChanged += new System.EventHandler(this.Txt_TitularConta_TextChanged);
             this.Txt_TitularConta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_TitularConta_KeyPress);
             // 
             // Btn_Saque
@@ -148,7 +150,7 @@
             this.Lbl_Valor.Location = new System.Drawing.Point(518, 199);
             this.Lbl_Valor.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_Valor.Name = "Lbl_Valor";
-            this.Lbl_Valor.Size = new System.Drawing.Size(98, 37);
+            this.Lbl_Valor.Size = new System.Drawing.Size(67, 25);
             this.Lbl_Valor.TabIndex = 10;
             this.Lbl_Valor.Text = "Valor";
             // 
@@ -159,7 +161,7 @@
             this.Lbl_SaldoDisponivel.Location = new System.Drawing.Point(271, 199);
             this.Lbl_SaldoDisponivel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_SaldoDisponivel.Name = "Lbl_SaldoDisponivel";
-            this.Lbl_SaldoDisponivel.Size = new System.Drawing.Size(270, 37);
+            this.Lbl_SaldoDisponivel.Size = new System.Drawing.Size(189, 25);
             this.Lbl_SaldoDisponivel.TabIndex = 11;
             this.Lbl_SaldoDisponivel.Text = "Saldo Disponivel";
             // 
@@ -168,7 +170,7 @@
             this.Txt_Valor.Location = new System.Drawing.Point(511, 263);
             this.Txt_Valor.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_Valor.Name = "Txt_Valor";
-            this.Txt_Valor.Size = new System.Drawing.Size(139, 43);
+            this.Txt_Valor.Size = new System.Drawing.Size(139, 31);
             this.Txt_Valor.TabIndex = 12;
             this.Txt_Valor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Valor_KeyPress);
             // 
@@ -179,7 +181,7 @@
             this.Txt_Saldo.Location = new System.Drawing.Point(276, 263);
             this.Txt_Saldo.Margin = new System.Windows.Forms.Padding(6);
             this.Txt_Saldo.Name = "Txt_Saldo";
-            this.Txt_Saldo.Size = new System.Drawing.Size(147, 43);
+            this.Txt_Saldo.Size = new System.Drawing.Size(147, 31);
             this.Txt_Saldo.TabIndex = 13;
             // 
             // label1
@@ -188,7 +190,7 @@
             this.label1.BackColor = System.Drawing.Color.Yellow;
             this.label1.Location = new System.Drawing.Point(414, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(335, 37);
+            this.label1.Size = new System.Drawing.Size(234, 25);
             this.label1.TabIndex = 14;
             this.label1.Text = "Banco - Invista seu $";
             // 
@@ -197,7 +199,7 @@
             this.Lbl_idade.AutoSize = true;
             this.Lbl_idade.Location = new System.Drawing.Point(841, 58);
             this.Lbl_idade.Name = "Lbl_idade";
-            this.Lbl_idade.Size = new System.Drawing.Size(101, 37);
+            this.Lbl_idade.Size = new System.Drawing.Size(70, 25);
             this.Lbl_idade.TabIndex = 15;
             this.Lbl_idade.Text = "Idade";
             // 
@@ -206,7 +208,7 @@
             this.Txt_idade.Location = new System.Drawing.Point(848, 113);
             this.Txt_idade.MaxLength = 3;
             this.Txt_idade.Name = "Txt_idade";
-            this.Txt_idade.Size = new System.Drawing.Size(100, 43);
+            this.Txt_idade.Size = new System.Drawing.Size(100, 31);
             this.Txt_idade.TabIndex = 18;
             this.Txt_idade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_idade_KeyPress);
             // 
@@ -215,7 +217,7 @@
             this.Txt_mes_Nasc.Location = new System.Drawing.Point(1002, 113);
             this.Txt_mes_Nasc.MaxLength = 2;
             this.Txt_mes_Nasc.Name = "Txt_mes_Nasc";
-            this.Txt_mes_Nasc.Size = new System.Drawing.Size(100, 43);
+            this.Txt_mes_Nasc.Size = new System.Drawing.Size(100, 31);
             this.Txt_mes_Nasc.TabIndex = 19;
             this.Txt_mes_Nasc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_mes_Nasc_KeyPress);
             // 
@@ -224,7 +226,7 @@
             this.Lbl_mes_Nascimento.AutoSize = true;
             this.Lbl_mes_Nascimento.Location = new System.Drawing.Point(969, 58);
             this.Lbl_mes_Nascimento.Name = "Lbl_mes_Nascimento";
-            this.Lbl_mes_Nascimento.Size = new System.Drawing.Size(177, 37);
+            this.Lbl_mes_Nascimento.Size = new System.Drawing.Size(123, 25);
             this.Lbl_mes_Nascimento.TabIndex = 20;
             this.Lbl_mes_Nascimento.Text = "Mês Nasc.";
             // 
@@ -233,7 +235,7 @@
             this.Lbl_conta_saque.AutoSize = true;
             this.Lbl_conta_saque.Location = new System.Drawing.Point(189, 199);
             this.Lbl_conta_saque.Name = "Lbl_conta_saque";
-            this.Lbl_conta_saque.Size = new System.Drawing.Size(36, 37);
+            this.Lbl_conta_saque.Size = new System.Drawing.Size(25, 25);
             this.Lbl_conta_saque.TabIndex = 21;
             this.Lbl_conta_saque.Text = "0";
             // 
@@ -242,7 +244,7 @@
             this.Lbl_Conta_Deposito.AutoSize = true;
             this.Lbl_Conta_Deposito.Location = new System.Drawing.Point(186, 260);
             this.Lbl_Conta_Deposito.Name = "Lbl_Conta_Deposito";
-            this.Lbl_Conta_Deposito.Size = new System.Drawing.Size(36, 37);
+            this.Lbl_Conta_Deposito.Size = new System.Drawing.Size(25, 25);
             this.Lbl_Conta_Deposito.TabIndex = 22;
             this.Lbl_Conta_Deposito.Text = "0";
             // 
@@ -251,7 +253,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(83, 389);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 37);
+            this.label4.Size = new System.Drawing.Size(0, 25);
             this.label4.TabIndex = 23;
             // 
             // Btn_investir
@@ -266,7 +268,7 @@
             // 
             // Frm_conta_banco
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(1145, 453);
@@ -314,7 +316,6 @@
         private System.Windows.Forms.Label Lbl_Valor;
         private System.Windows.Forms.Label Lbl_SaldoDisponivel;
         private System.Windows.Forms.TextBox Txt_Valor;
-        private System.Windows.Forms.TextBox Txt_Saldo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Lbl_idade;
         private System.Windows.Forms.TextBox Txt_idade;
@@ -324,6 +325,7 @@
         private System.Windows.Forms.Label Lbl_Conta_Deposito;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Btn_investir;
+        public System.Windows.Forms.TextBox Txt_Saldo;
     }
 }
 
