@@ -5,6 +5,13 @@ namespace Projeto_Banco
 {
     public partial class Frm_conta_banco : Form
     {
+        public Frm_conta_banco(string agencia, string numero_conta, string titular, string senha)
+        {
+            InitializeComponent();
+            Txt_Agencia.Text = agencia;
+            Txt_NConta.Text = numero_conta;
+            Txt_TitularConta.Text = titular;
+        }
         public Frm_conta_banco()
         {
             InitializeComponent();

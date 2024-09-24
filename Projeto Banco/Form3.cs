@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,15 @@ namespace Projeto_Banco
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            Frm_conta_banco banco = new Frm_conta_banco();
-            banco.Show();
-            Hide();
+            if (bancoDados(Txt_Agencia.Text, Txt_Numero_Conta.Text, Txt_Titular.Text, Txt_Senha.Text))
+            {
+                Frm_conta_banco banco = new Frm_conta_banco(Txt_Agencia.Text, Txt_Numero_Conta.Text, Txt_Titular.Text, Txt_Senha.Text);
+                banco.Show();
+                Hide();
+
+            }
+
+
         }
 
         private void Btn_Cadastrar_Click(object sender, EventArgs e)
@@ -29,6 +36,27 @@ namespace Projeto_Banco
             Frm_Cadastro cadastro = new Frm_Cadastro();
             cadastro.Show();
             Hide();
+        }
+        private bool bancoDados(string agencia, string numero_conta, string titular, string senha)
+        {
+            string connectionString = "Server=RYZEN-5\\SQLEXPRESS;Database=Projeto-Banco;Integrated Security=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var query = "select * from table_1";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                var rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    if (rdr["Agencia"].ToString() == agencia && rdr["Nu_conta"].ToString() == numero_conta
+                        && rdr["Titular"].ToString() == titular && rdr["Senha"].ToString() == senha)
+                    {
+                        return true;
+                    }
+                }
+                rdr.Close();
+            }
+            return false;
         }
     }
 }

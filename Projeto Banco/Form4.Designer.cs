@@ -38,7 +38,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Txt_Email = new System.Windows.Forms.TextBox();
             this.Lbl_Email = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txt_Senha = new System.Windows.Forms.TextBox();
             this.Lbl_Senha = new System.Windows.Forms.Label();
             this.Txt_Numero_Conta = new System.Windows.Forms.TextBox();
             this.Txt_Agencia = new System.Windows.Forms.TextBox();
@@ -46,8 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Btn_Cadastrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Btn_Login = new System.Windows.Forms.Button();
-            this.Btn_Voltar = new System.Windows.Forms.Button();
+            this.Btn_Logar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +117,7 @@
             // 
             this.groupBox1.Controls.Add(this.Txt_Email);
             this.groupBox1.Controls.Add(this.Lbl_Email);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.Txt_Senha);
             this.groupBox1.Controls.Add(this.Lbl_Senha);
             this.groupBox1.Controls.Add(this.Txt_mes_Nasc);
             this.groupBox1.Controls.Add(this.label6);
@@ -149,12 +148,12 @@
             this.Lbl_Email.TabIndex = 20;
             this.Lbl_Email.Text = "Email";
             // 
-            // textBox1
+            // Txt_Senha
             // 
-            this.textBox1.Location = new System.Drawing.Point(26, 152);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(274, 26);
-            this.textBox1.TabIndex = 19;
+            this.Txt_Senha.Location = new System.Drawing.Point(26, 152);
+            this.Txt_Senha.Name = "Txt_Senha";
+            this.Txt_Senha.Size = new System.Drawing.Size(274, 26);
+            this.Txt_Senha.TabIndex = 19;
             // 
             // Lbl_Senha
             // 
@@ -222,31 +221,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados da Conta";
             // 
-            // Btn_Login
+            // Btn_Logar
             // 
-            this.Btn_Login.Location = new System.Drawing.Point(692, 513);
-            this.Btn_Login.Name = "Btn_Login";
-            this.Btn_Login.Size = new System.Drawing.Size(96, 50);
-            this.Btn_Login.TabIndex = 22;
-            this.Btn_Login.Text = "Login";
-            this.Btn_Login.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Voltar
-            // 
-            this.Btn_Voltar.Location = new System.Drawing.Point(556, 513);
-            this.Btn_Voltar.Name = "Btn_Voltar";
-            this.Btn_Voltar.Size = new System.Drawing.Size(92, 50);
-            this.Btn_Voltar.TabIndex = 23;
-            this.Btn_Voltar.Text = "Voltar";
-            this.Btn_Voltar.UseVisualStyleBackColor = true;
+            this.Btn_Logar.Location = new System.Drawing.Point(556, 513);
+            this.Btn_Logar.Name = "Btn_Logar";
+            this.Btn_Logar.Size = new System.Drawing.Size(92, 50);
+            this.Btn_Logar.TabIndex = 23;
+            this.Btn_Logar.Text = "Logar";
+            this.Btn_Logar.UseVisualStyleBackColor = true;
+            this.Btn_Logar.Click += new System.EventHandler(this.Btn_Voltar_Click);
             // 
             // Frm_Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 587);
-            this.Controls.Add(this.Btn_Voltar);
-            this.Controls.Add(this.Btn_Login);
+            this.Controls.Add(this.Btn_Logar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Btn_Cadastrar);
             this.Controls.Add(this.groupBox1);
@@ -278,11 +268,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Btn_Cadastrar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Txt_Senha;
         private System.Windows.Forms.Label Lbl_Senha;
-        private System.Windows.Forms.Button Btn_Login;
         private System.Windows.Forms.TextBox Txt_Email;
         private System.Windows.Forms.Label Lbl_Email;
-        private System.Windows.Forms.Button Btn_Voltar;
+        private System.Windows.Forms.Button Btn_Logar;
     }
 }

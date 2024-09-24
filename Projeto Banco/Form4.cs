@@ -13,7 +13,7 @@ namespace Projeto_Banco
     public partial class Frm_Cadastro : Form
     {
 
-        
+
 
         public Frm_Cadastro()
         {
@@ -47,7 +47,7 @@ namespace Projeto_Banco
 
         private void Txt_idade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar) && char.IsControl(e.KeyChar))
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -89,7 +89,7 @@ namespace Projeto_Banco
                 {
                     if (conta.mes_nascimento > 0 && conta.mes_nascimento < 13)
                     {
-                        Btn_Cadastrar.Focus();
+                        Txt_Senha.Focus();
                     }
                     else
                     {
@@ -108,24 +108,44 @@ namespace Projeto_Banco
 
         private void Btn_Cadastrar_Click(object sender, EventArgs e)
         {
-          conta.email = Txt_Email.Text;
-            if (conta.validandoEmail(conta.email))
+            conta.email = Txt_Email.Text;
+            conta.senha = Txt_Senha.Text;
+            if (string.IsNullOrWhiteSpace(conta.senha))
             {
-                conta.GerarAgenciNuConta();
-                Txt_Agencia.Text = conta.agencia.ToString();
-                Txt_Numero_Conta.Text = conta.n_conta.ToString();
+                MessageBox.Show("O cmapo 'Senha' esta vazio por favor digite uma senha com 8 até 32 caracteres",
+                    "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Senha.Focus();
+               
+            }
+                if (conta.senha.Length < 8 || conta.senha.Length > 32)
+                 {
+                MessageBox.Show("A senha deve conter entre 8 a 32 caracteres ", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (conta.validandoEmail(conta.email))
+                {
+                    conta.GerarAgenciNuConta();
+                    Txt_Agencia.Text = conta.agencia.ToString();
+                    Txt_Numero_Conta.Text = conta.n_conta.ToString();
 
-                Btn_Cadastrar.Visible = false;
+                    Btn_Cadastrar.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("E-mail inválido. Por favor, insira um e-mail válido.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Txt_Email.Clear();
+                    Txt_Email.Focus();
+                }
             }
-            else
-            {
-                MessageBox.Show("E-mail inválido. Por favor, insira um e-mail válido.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Txt_Email.Clear();
-                Txt_Email.Focus();
-            }
+            
+           
+
         }
 
-       
+        private void Btn_Voltar_Click(object sender, EventArgs e)
+        {
+            Frm_Login login = new Frm_Login();
+            login.Show();
+            Hide();
+        }
     }
 }
     
