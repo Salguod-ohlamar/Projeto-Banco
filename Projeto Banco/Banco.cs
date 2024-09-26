@@ -6,16 +6,24 @@ namespace Projeto_Banco
     public partial class Frm_conta_banco : Form
     {
         public Frm_conta_banco(string agencia, string numero_conta, string titular, string senha)
+
+
         {
             InitializeComponent();
             Txt_Agencia.Text = agencia;
             Txt_NConta.Text = numero_conta;
             Txt_TitularConta.Text = titular;
+            //Txt_mes_Nasc.Text = mes_nascimento;
+            //Txt_idade.Text = idade;
+            
+            
         }
         public Frm_conta_banco()
         {
             InitializeComponent();
         }
+
+       
 
         Conta_Bancaria conta = new Conta_Bancaria();
 
@@ -36,7 +44,7 @@ namespace Projeto_Banco
          && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && double.TryParse(Txt_Valor.Text, out double valor) && mes_nascimento > 0 && mes_nascimento <= 12)
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
-                conta.n_conta = int.Parse(Txt_NConta.Text);
+                conta.numero_conta = int.Parse(Txt_NConta.Text);
                 conta.TitularConta = Txt_TitularConta.Text;
                 conta.valor = double.Parse(Txt_Valor.Text);
                 conta.idade = int.Parse(Txt_idade.Text);
@@ -83,7 +91,7 @@ namespace Projeto_Banco
          && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && mes_nascimento > 0 && mes_nascimento <= 12)
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
-                conta.n_conta = int.Parse(Txt_NConta.Text);
+                conta.numero_conta = int.Parse(Txt_NConta.Text);
                 conta.TitularConta = Txt_TitularConta.Text;
                 conta.valor = double.Parse(Txt_Valor.Text);
                 conta.idade = int.Parse(Txt_idade.Text);
@@ -262,6 +270,8 @@ namespace Projeto_Banco
         {
 
         }
+
+      
 
         private void Txt_mes_Nasc_KeyPress(object sender, KeyPressEventArgs e)
         {

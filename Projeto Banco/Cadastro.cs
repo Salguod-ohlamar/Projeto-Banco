@@ -110,33 +110,32 @@ namespace Projeto_Banco
         {
             conta.email = Txt_Email.Text;
             conta.senha = Txt_Senha.Text;
-            if (string.IsNullOrWhiteSpace(conta.senha))
+            if (string.IsNullOrWhiteSpace(conta.senha))//nao deia cadastrar senha com campo bazio
             {
                 MessageBox.Show("O cmapo 'Senha' esta vazio por favor digite uma senha com 8 até 32 caracteres",
                     "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Senha.Focus();
                
             }
-                if (conta.senha.Length < 8 || conta.senha.Length > 32)
-                 {
+                if (conta.senha.Length < 8 || conta.senha.Length > 32)// nao deixa cadastar senha menor que 8 e maior que 32
+                {
                 MessageBox.Show("A senha deve conter entre 8 a 32 caracteres ", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (conta.validandoEmail(conta.email))
-                {
-                    conta.GerarAgenciNuConta();
-                    Txt_Agencia.Text = conta.agencia.ToString();
-                    Txt_Numero_Conta.Text = conta.n_conta.ToString();
+                }
+            if (conta.validandoEmail(conta.email))//chama a a validação de email
+            {
+                conta.GerarAgenciNuConta();//chama o gerador de conta e agencia e numero de conta
+                Txt_Agencia.Text = conta.agencia.ToString();
+                Txt_Numero_Conta.Text = conta.numero_conta.ToString();
 
-                    Btn_Cadastrar.Visible = false;
-                }
-                else
-                {
-                    MessageBox.Show("E-mail inválido. Por favor, insira um e-mail válido.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Txt_Email.Clear();
-                    Txt_Email.Focus();
-                }
+                Btn_Cadastrar.Visible = false;
             }
-            
-           
+            else
+            {
+                MessageBox.Show("E-mail inválido. Por favor, insira um e-mail válido.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Email.Clear();
+                Txt_Email.Focus();
+            }
+
 
         }
 

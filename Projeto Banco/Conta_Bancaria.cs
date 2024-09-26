@@ -8,7 +8,7 @@ namespace Projeto_Banco
 
     internal class Conta_Bancaria
     {
-        public int agencia, n_conta, idade, mes_nascimento, mes;
+        public int agencia, numero_conta, idade, mes_nascimento, mes;
         public double valor, saldo, invetimento;
         public string TitularConta, email, senha;
 
@@ -34,7 +34,7 @@ namespace Projeto_Banco
         {
             Random random = new Random();
             agencia = random.Next(1000, 10000);// gera um numero de 4 digitos
-            n_conta = random.Next(10000, 100000);//gera um numero de 5 digitos
+            numero_conta = random.Next(10000, 100000);//gera um numero de 5 digitos
 
             MessageBox.Show("Guarde o numero da sua Agencia e conta para efetuar login","Aviso", MessageBoxButtons.OK,
                 MessageBoxIcon.Exclamation);
