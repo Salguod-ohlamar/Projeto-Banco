@@ -23,10 +23,6 @@ namespace Projeto_Banco
         
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-
                 if (bancoDados(Txt_Agencia.Text, Txt_Numero_Conta.Text, Txt_Titular.Text, Txt_Senha.Text))
                 {
                     MessageBox.Show("Login bem sucedido", "Aviso de Login0", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -40,13 +36,7 @@ namespace Projeto_Banco
                 {
                     MessageBox.Show("Login Invalido verifique as informações e tente novamente ", "Login Invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-
+           
         }
         
         
@@ -71,7 +61,14 @@ namespace Projeto_Banco
             }
             return false;
         }
+
+        private void Btn_Cadastro_Click(object sender, EventArgs e)
+        {
+            Frm_Cadastro cadastro = new Frm_Cadastro();
+            cadastro.Show();
+            Hide();
         }
+    }
 
 
     }

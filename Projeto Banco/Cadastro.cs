@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Projeto_Banco
 {
@@ -33,7 +36,7 @@ namespace Projeto_Banco
 
                 if (Txt_TitularConta.TextLength >= 3)
                 {
-                    Txt_idade.Focus();
+                    Txt_Idade.Focus();
                 }
                 else
                 {
@@ -54,9 +57,9 @@ namespace Projeto_Banco
 
             if (e.KeyChar == 13)
             {
-                if (Txt_idade.Text != "")
+                if (Txt_Idade.Text != "")
                 {
-                    conta.idade = int.Parse(Txt_idade.Text);
+                    conta.idade = int.Parse(Txt_Idade.Text);
 
                     if (conta.idade >= 18 && conta.idade <= 120)
                     {
@@ -66,8 +69,8 @@ namespace Projeto_Banco
                     {
                         MessageBox.Show($"'{conta.idade}'anos. Idade incorreta, precisa " +
                             $"ter maioridade, até 120 amos ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Txt_idade.Clear();
-                        Txt_idade.Focus();
+                        Txt_Idade.Clear();
+                        Txt_Idade.Focus();
                     }
                 }
             }
@@ -108,6 +111,8 @@ namespace Projeto_Banco
 
         private void Btn_Cadastrar_Click(object sender, EventArgs e)
         {
+
+
             conta.email = Txt_Email.Text;
             conta.senha = Txt_Senha.Text;
             if (string.IsNullOrWhiteSpace(conta.senha))//nao deia cadastrar senha com campo bazio
@@ -115,12 +120,12 @@ namespace Projeto_Banco
                 MessageBox.Show("O cmapo 'Senha' esta vazio por favor digite uma senha com 8 até 32 caracteres",
                     "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Senha.Focus();
-               
+
             }
-                if (conta.senha.Length < 8 || conta.senha.Length > 32)// nao deixa cadastar senha menor que 8 e maior que 32
-                {
+            if (conta.senha.Length < 8 || conta.senha.Length > 32)// nao deixa cadastar senha menor que 8 e maior que 32
+            {
                 MessageBox.Show("A senha deve conter entre 8 a 32 caracteres ", "Erro de validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
             if (conta.validandoEmail(conta.email))//chama a a validação de email
             {
                 conta.GerarAgenciNuConta();//chama o gerador de conta e agencia e numero de conta
@@ -128,15 +133,23 @@ namespace Projeto_Banco
                 Txt_Numero_Conta.Text = conta.numero_conta.ToString();
 
                 Btn_Cadastrar.Visible = false;
-            }
-            else
-            {
-                MessageBox.Show("E-mail inválido. Por favor, insira um e-mail válido.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Txt_Email.Clear();
-                Txt_Email.Focus();
-            }
 
 
+                               
+
+                if (cadastrado(Txt_Agencia.Text, Txt_Numero_Conta.Text, Txt_TitularConta.Text, Txt_Senha.Text, Txt_Email.Text, 
+                    conta.idade, conta.mes_nascimento))// verifica se os campos foram rpeenchidos e insere no BD
+                {
+                    MessageBox.Show("Cadastro realizado com sucesso", "Cadastro", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("E-mail inválido. Por favor, insira um e-mail válido.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Txt_Email.Clear();
+                    Txt_Email.Focus();
+                }
+
+            }
         }
 
         private void Btn_Voltar_Click(object sender, EventArgs e)
@@ -145,6 +158,35 @@ namespace Projeto_Banco
             login.Show();
             Hide();
         }
+        private bool cadastrado(string agencia, string nu_conta, string titular, string senha, string email, int idade, int mes_nascimento)
+        {
+            string connectionString = "Server=RYZEN-5\\SQLEXPRESS;Database=Projeto-Banco;Integrated Security=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO Table_1 (titular, idade, mes_nascimento, senha, email, agencia, nu_conta) " +
+                               "VALUES (@Titular, @Idade, @MesNascimento, @Senha, @Email, @Agencia, @Nu_conta)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Titular", titular);
+                    command.Parameters.AddWithValue("@Idade", idade);
+                    command.Parameters.AddWithValue("@MesNascimento", mes_nascimento);
+                    command.Parameters.AddWithValue("@Senha", senha);
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Agencia", agencia);
+                    command.Parameters.AddWithValue("@Nu_conta", nu_conta);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            return true;
+        }
+
+
+
     }
+
+
 }
     

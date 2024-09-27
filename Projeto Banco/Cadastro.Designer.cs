@@ -32,7 +32,7 @@
             this.Txt_TitularConta = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Txt_idade = new System.Windows.Forms.TextBox();
+            this.Txt_Idade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Txt_mes_Nasc = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -87,13 +87,13 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Idade";
             // 
-            // Txt_idade
+            // Txt_Idade
             // 
-            this.Txt_idade.Location = new System.Drawing.Point(353, 73);
-            this.Txt_idade.Name = "Txt_idade";
-            this.Txt_idade.Size = new System.Drawing.Size(100, 26);
-            this.Txt_idade.TabIndex = 14;
-            this.Txt_idade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_idade_KeyPress);
+            this.Txt_Idade.Location = new System.Drawing.Point(353, 73);
+            this.Txt_Idade.Name = "Txt_Idade";
+            this.Txt_Idade.Size = new System.Drawing.Size(100, 26);
+            this.Txt_Idade.TabIndex = 14;
+            this.Txt_Idade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_idade_KeyPress);
             // 
             // label6
             // 
@@ -122,7 +122,7 @@
             this.groupBox1.Controls.Add(this.Txt_mes_Nasc);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.Txt_idade);
+            this.groupBox1.Controls.Add(this.Txt_Idade);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.Txt_TitularConta);
             this.groupBox1.Location = new System.Drawing.Point(23, 114);
@@ -258,7 +258,7 @@
         private System.Windows.Forms.TextBox Txt_TitularConta;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Txt_idade;
+        private System.Windows.Forms.TextBox Txt_Idade;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Txt_mes_Nasc;
         private System.Windows.Forms.GroupBox groupBox1;
