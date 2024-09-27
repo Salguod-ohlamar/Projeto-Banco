@@ -47,6 +47,7 @@
             this.Btn_Cadastrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Btn_Logar = new System.Windows.Forms.Button();
+            this.Btn_MostrarOcultar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(349, 37);
+            this.label1.Location = new System.Drawing.Point(377, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 20);
             this.label1.TabIndex = 13;
@@ -89,7 +90,7 @@
             // 
             // Txt_Idade
             // 
-            this.Txt_Idade.Location = new System.Drawing.Point(353, 73);
+            this.Txt_Idade.Location = new System.Drawing.Point(372, 73);
             this.Txt_Idade.Name = "Txt_Idade";
             this.Txt_Idade.Size = new System.Drawing.Size(100, 26);
             this.Txt_Idade.TabIndex = 14;
@@ -98,7 +99,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(496, 37);
+            this.label6.Location = new System.Drawing.Point(529, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(158, 20);
             this.label6.TabIndex = 15;
@@ -107,7 +108,7 @@
             // Txt_mes_Nasc
             // 
             this.Txt_mes_Nasc.AcceptsReturn = true;
-            this.Txt_mes_Nasc.Location = new System.Drawing.Point(500, 73);
+            this.Txt_mes_Nasc.Location = new System.Drawing.Point(535, 73);
             this.Txt_mes_Nasc.Name = "Txt_mes_Nasc";
             this.Txt_mes_Nasc.Size = new System.Drawing.Size(100, 26);
             this.Txt_mes_Nasc.TabIndex = 16;
@@ -115,6 +116,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Btn_MostrarOcultar);
             this.groupBox1.Controls.Add(this.Txt_Email);
             this.groupBox1.Controls.Add(this.Lbl_Email);
             this.groupBox1.Controls.Add(this.Txt_Senha);
@@ -134,7 +136,7 @@
             // 
             // Txt_Email
             // 
-            this.Txt_Email.Location = new System.Drawing.Point(353, 151);
+            this.Txt_Email.Location = new System.Drawing.Point(372, 152);
             this.Txt_Email.Name = "Txt_Email";
             this.Txt_Email.Size = new System.Drawing.Size(335, 26);
             this.Txt_Email.TabIndex = 21;
@@ -142,7 +144,7 @@
             // Lbl_Email
             // 
             this.Lbl_Email.AutoSize = true;
-            this.Lbl_Email.Location = new System.Drawing.Point(353, 118);
+            this.Lbl_Email.Location = new System.Drawing.Point(377, 118);
             this.Lbl_Email.Name = "Lbl_Email";
             this.Lbl_Email.Size = new System.Drawing.Size(48, 20);
             this.Lbl_Email.TabIndex = 20;
@@ -154,6 +156,7 @@
             this.Txt_Senha.Name = "Txt_Senha";
             this.Txt_Senha.Size = new System.Drawing.Size(274, 26);
             this.Txt_Senha.TabIndex = 19;
+            this.Txt_Senha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Senha_KeyPress);
             // 
             // Lbl_Senha
             // 
@@ -231,6 +234,16 @@
             this.Btn_Logar.UseVisualStyleBackColor = true;
             this.Btn_Logar.Click += new System.EventHandler(this.Btn_Voltar_Click);
             // 
+            // Btn_MostrarOcultar
+            // 
+            this.Btn_MostrarOcultar.Location = new System.Drawing.Point(307, 152);
+            this.Btn_MostrarOcultar.Name = "Btn_MostrarOcultar";
+            this.Btn_MostrarOcultar.Size = new System.Drawing.Size(23, 26);
+            this.Btn_MostrarOcultar.TabIndex = 22;
+            this.Btn_MostrarOcultar.Text = "M";
+            this.Btn_MostrarOcultar.UseVisualStyleBackColor = true;
+            this.Btn_MostrarOcultar.Click += new System.EventHandler(this.Btn_MostrarOcultar_Click);
+            // 
             // Frm_Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -273,5 +286,6 @@
         private System.Windows.Forms.TextBox Txt_Email;
         private System.Windows.Forms.Label Lbl_Email;
         private System.Windows.Forms.Button Btn_Logar;
+        private System.Windows.Forms.Button Btn_MostrarOcultar;
     }
 }

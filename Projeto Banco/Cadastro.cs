@@ -22,16 +22,16 @@ namespace Projeto_Banco
         {
             InitializeComponent();
         }
-        Conta_Bancaria conta = new Conta_Bancaria();
+        Conta_Bancaria conta                = new Conta_Bancaria();
 
         private void Txt_Titular_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled                   = true;
                 MessageBox.Show("Digite apenas letras ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            if (e.KeyChar == 13)
+            if (e.KeyChar                   == 13)
             {
 
                 if (Txt_TitularConta.TextLength >= 3)
@@ -52,14 +52,14 @@ namespace Projeto_Banco
         {
             if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled                   = true;
             }
 
-            if (e.KeyChar == 13)
+            if (e.KeyChar                   == 13)
             {
                 if (Txt_Idade.Text != "")
                 {
-                    conta.idade = int.Parse(Txt_Idade.Text);
+                    conta.idade             = int.Parse(Txt_Idade.Text);
 
                     if (conta.idade >= 18 && conta.idade <= 120)
                     {
@@ -80,14 +80,14 @@ namespace Projeto_Banco
         {
             if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))//condiçãao para aceitar somente numeros e teclaas e controle
             {
-                e.Handled = true;//verificando se é somente número
+                e.Handled                   = true;//verificando se é somente número
 
                 MessageBox.Show("Somente números!!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
-            if (e.KeyChar == 13)//condição para tclar o "enter"
+            if (e.KeyChar                   == 13)//condição para tclar o "enter"
             {
-                conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
+                conta.mes_nascimento        = int.Parse(Txt_mes_Nasc.Text);
                 if (Txt_mes_Nasc.Text != "")//condição para verificar se o campo esta vazio
                 {
                     if (conta.mes_nascimento > 0 && conta.mes_nascimento < 13)
@@ -113,8 +113,8 @@ namespace Projeto_Banco
         {
 
 
-            conta.email = Txt_Email.Text;
-            conta.senha = Txt_Senha.Text;
+            conta.email                     = Txt_Email.Text;
+            conta.senha                     = Txt_Senha.Text;
             if (string.IsNullOrWhiteSpace(conta.senha))//nao deia cadastrar senha com campo bazio
             {
                 MessageBox.Show("O cmapo 'Senha' esta vazio por favor digite uma senha com 8 até 32 caracteres",
@@ -129,10 +129,10 @@ namespace Projeto_Banco
             if (conta.validandoEmail(conta.email))//chama a a validação de email
             {
                 conta.GerarAgenciNuConta();//chama o gerador de conta e agencia e numero de conta
-                Txt_Agencia.Text = conta.agencia.ToString();
-                Txt_Numero_Conta.Text = conta.numero_conta.ToString();
+                Txt_Agencia.Text            = conta.agencia.ToString();
+                Txt_Numero_Conta.Text       = conta.numero_conta.ToString();
 
-                Btn_Cadastrar.Visible = false;
+                Btn_Cadastrar.Visible       = false;
 
 
                                
@@ -154,20 +154,20 @@ namespace Projeto_Banco
 
         private void Btn_Voltar_Click(object sender, EventArgs e)
         {
-            Frm_Login login = new Frm_Login();
+            Frm_Login login                 = new Frm_Login();
             login.Show();
             Hide();
         }
         private bool cadastrado(string agencia, string nu_conta, string titular, string senha, string email, int idade, int mes_nascimento)
         {
-            string connectionString = "Server=RYZEN-5\\SQLEXPRESS;Database=Projeto-Banco;Integrated Security=True;";
+            string connectionString         = "Server=RYZEN-5\\SQLEXPRESS;Database=Projeto-Banco;Integrated Security=True;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "INSERT INTO Table_1 (titular, idade, mes_nascimento, senha, email, agencia, nu_conta) " +
+                string query                = "INSERT INTO Table_1 (titular, idade, mes_nascimento, senha, email, agencia, nu_conta) " +
                                "VALUES (@Titular, @Idade, @MesNascimento, @Senha, @Email, @Agencia, @Nu_conta)";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command   = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Titular", titular);
                     command.Parameters.AddWithValue("@Idade", idade);
@@ -183,10 +183,27 @@ namespace Projeto_Banco
             return true;
         }
 
+        private void Txt_Senha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Txt_Senha.UseSystemPasswordChar = true;
+           
+        }
 
-
+        private void Btn_MostrarOcultar_Click(object sender, EventArgs e)
+        {
+            // Alterna a visibilidade da senha
+            if (Txt_Senha.UseSystemPasswordChar)
+            {
+                Txt_Senha.UseSystemPasswordChar = false;
+                Btn_MostrarOcultar.Text = "Esconder";
+            }
+            else
+            {
+                Txt_Senha.UseSystemPasswordChar = true;
+                Btn_MostrarOcultar.Text = "Mostrar";
+            }
+        }
+    }
     }
 
 
-}
-    
