@@ -103,10 +103,11 @@ namespace Projeto_Banco
 
         private void Btn_Voltar_Click(object sender, EventArgs e)
         {
-            Frm_conta_banco banco = new Frm_conta_banco();//instanciando o objeto banco, para chamar a tela inicial
-            banco.Show();
-            conta.saldo -= conta.invetimento;//calculo do invetsimento
-            banco.Txt_Saldo.Text = Txt_saldo_disponivel.Text;//saldo da tela investo para o saldo da tela principal
+            
+            //Frm_conta_banco banco = new Frm_conta_banco();//instanciando o objeto banco, para chamar a tela inicial
+           // banco.Show();
+            //conta.saldo -= conta.invetimento;//calculo do invetsimento
+            //banco.Txt_Saldo.Text = Txt_saldo_disponivel.Text;//saldo da tela investo para o saldo da tela principal
             Hide();//ocultando a tela de investimentos,
 
         }

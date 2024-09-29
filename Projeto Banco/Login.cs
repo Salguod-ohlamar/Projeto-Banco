@@ -20,53 +20,73 @@ namespace Projeto_Banco
             InitializeComponent();
         }
 
-        
+
         private void Btn_Login_Click(object sender, EventArgs e)
         {
-                if (bancoDados(Txt_Agencia.Text, Txt_Numero_Conta.Text, Txt_Titular.Text, Txt_Senha.Text))
-                {
-                    MessageBox.Show("Login bem sucedido", "Aviso de Login0", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Frm_conta_banco banco = new Frm_conta_banco(Txt_Agencia.Text, Txt_Numero_Conta.Text, Txt_Titular.Text,
-                      Txt_Senha.Text);
-                    banco.Show();
-                    Hide();
-
-                }
-                else
-                {
-                    MessageBox.Show("Login Invalido verifique as informações e tente novamente ", "Login Invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-           
+            int? userId = bancoDados(Txt_Agencia.Text, Txt_Numero_Conta.Text,  Txt_Senha.Text);
+            if (userId.HasValue)
+            {
+                MessageBox.Show("Login bem sucedido", "Aviso de Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Frm_conta_banco banco = new Frm_conta_banco(userId.Value);
+                banco.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Login Invalido verifique as informações e tente novamente", "Login Invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-        
-        
-        private bool bancoDados(string agencia, string numero_conta, string titular, string senha)//função para conectar ao banco de dados
+
+
+        private int? bancoDados(string agencia, string numero_conta,  string senha)
         {
-            string connectionString = "Server=RYZEN-5\\SQLEXPRESS;Database=Projeto-Banco;Integrated Security=True;";// cria uma variavel par aconectar ao Banco
-            using (SqlConnection connection = new SqlConnection(connectionString))// criar uma instancoa de conexao
+            string connectionString = "Server=RYZEN-5\\SQLEXPRESS;Database=Projeto-Banco;Integrated Security=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var query = "select * from table_1";//faz uma seleção no banco de tudo o que tem dentro
-                SqlCommand cmd = new SqlCommand(query, connection); //realiza a pesquisa criando uma instancia e executando comandos 
-                var rdr = cmd.ExecuteReader();// poe o resultado em uma nova variavel para ver o resultado
-                while (rdr.Read()) // executa a leitura dos campos
+                //var query = "SELECT ID FROM table_1 WHERE Agencia = @Agencia AND Nu_conta = @NumeroConta AND Titular = @Titular AND Senha = @Senha";
+                var query = "SELECT ID FROM table_1 WHERE Agencia = @Agencia AND Nu_conta = @NumeroConta AND Senha = @Senha";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@Agencia", agencia);
+                cmd.Parameters.AddWithValue("@NumeroConta", numero_conta);
+//                cmd.Parameters.AddWithValue("@Titular", titular);
+                cmd.Parameters.AddWithValue("@Senha", senha);
+
+                var rdr = cmd.ExecuteReader();
+                if (rdr.Read())
                 {
-                    if (rdr["Agencia"].ToString() == agencia && rdr["Nu_conta"].ToString() == numero_conta
-                        && rdr["Titular"].ToString() == titular && rdr["Senha"].ToString() == senha)
-                    {
-                        return true;// interrompe a instancia aberta
-                    }
+                    return (int)rdr["ID"];
                 }
                 rdr.Close();
             }
-            return false;
+            return null;
         }
+
+
+
+
+
 
         private void Btn_Cadastro_Click(object sender, EventArgs e)
         {
             Frm_Cadastro cadastro = new Frm_Cadastro();
             cadastro.Show();
             Hide();
+        }
+
+        private void Btn_MostrarOcultar_Click(object sender, EventArgs e)
+        {
+            // Alterna a visibilidade da senha
+            if (Txt_Senha.UseSystemPasswordChar)
+            {
+                Txt_Senha.UseSystemPasswordChar = false;
+                Btn_MostrarOcultar.Text = "Esconder";
+            }
+            else
+            {
+                Txt_Senha.UseSystemPasswordChar = true;
+                Btn_MostrarOcultar.Text = "Mostrar";
+            }
         }
     }
 

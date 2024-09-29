@@ -36,6 +36,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.Txt_mes_Nasc = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Btn_MostrarOcultar = new System.Windows.Forms.Button();
             this.Txt_Email = new System.Windows.Forms.TextBox();
             this.Lbl_Email = new System.Windows.Forms.Label();
             this.Txt_Senha = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.Btn_Cadastrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Btn_Logar = new System.Windows.Forms.Button();
-            this.Btn_MostrarOcultar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -133,6 +133,16 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
+            // 
+            // Btn_MostrarOcultar
+            // 
+            this.Btn_MostrarOcultar.Location = new System.Drawing.Point(307, 152);
+            this.Btn_MostrarOcultar.Name = "Btn_MostrarOcultar";
+            this.Btn_MostrarOcultar.Size = new System.Drawing.Size(34, 31);
+            this.Btn_MostrarOcultar.TabIndex = 22;
+            this.Btn_MostrarOcultar.Text = "M";
+            this.Btn_MostrarOcultar.UseVisualStyleBackColor = true;
+            this.Btn_MostrarOcultar.Click += new System.EventHandler(this.Btn_MostrarOcultar_Click);
             // 
             // Txt_Email
             // 
@@ -233,16 +243,6 @@
             this.Btn_Logar.Text = "Logar";
             this.Btn_Logar.UseVisualStyleBackColor = true;
             this.Btn_Logar.Click += new System.EventHandler(this.Btn_Voltar_Click);
-            // 
-            // Btn_MostrarOcultar
-            // 
-            this.Btn_MostrarOcultar.Location = new System.Drawing.Point(307, 152);
-            this.Btn_MostrarOcultar.Name = "Btn_MostrarOcultar";
-            this.Btn_MostrarOcultar.Size = new System.Drawing.Size(23, 26);
-            this.Btn_MostrarOcultar.TabIndex = 22;
-            this.Btn_MostrarOcultar.Text = "M";
-            this.Btn_MostrarOcultar.UseVisualStyleBackColor = true;
-            this.Btn_MostrarOcultar.Click += new System.EventHandler(this.Btn_MostrarOcultar_Click);
             // 
             // Frm_Cadastro
             // 

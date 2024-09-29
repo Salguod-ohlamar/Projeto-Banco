@@ -1,29 +1,58 @@
 ﻿using System;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Windows.Forms.PropertyGridInternal;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Projeto_Banco
 {
     public partial class Frm_conta_banco : Form
     {
-        public Frm_conta_banco(string agencia, string numero_conta, string titular, string senha)
 
 
+
+        public Frm_conta_banco(int id)
         {
             InitializeComponent();
-            Txt_Agencia.Text = agencia;
-            Txt_NConta.Text = numero_conta;
-            Txt_TitularConta.Text = titular;
-            //Txt_mes_Nasc.Text = mes_nascimento;
-            //Txt_idade.Text = idade;
-            
-            
-        }
-        public Frm_conta_banco()
-        {
-            InitializeComponent();
+            CarregarDados(id);
         }
 
-       
+        private void CarregarDados(int id)
+        {
+            string connectionString = "Server=RYZEN-5\\SQLEXPRESS;Database=Projeto-Banco;Integrated Security=True;";
+            string query = "SELECT agencia, nu_conta, titular, idade, mes_nascimento, email FROM table_1 WHERE ID = @ID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ID", id);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Txt_Agencia.Text = reader["agencia"].ToString();
+                        Txt_NConta.Text = reader["nu_conta"].ToString();
+                        Txt_TitularConta.Text = reader["titular"].ToString();
+                       // Txt_Senha.Text = reader["senha"].ToString();
+                        Txt_Mes_Nasc_Banco.Text = reader["mes_nascimento"].ToString();
+                        Txt_idadeBanco.Text = reader["idade"].ToString();
+                        Txt_Email_Banco.Text = reader["email"].ToString();
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao carregar dados: " + ex.Message);
+                }
+            }
+        }
+
+
 
         Conta_Bancaria conta = new Conta_Bancaria();
 
@@ -39,16 +68,16 @@ namespace Projeto_Banco
         {
             if (Txt_Agencia.TextLength == 4 && Txt_NConta.TextLength == 5
          && Txt_TitularConta.TextLength >= 3 && !string.IsNullOrWhiteSpace(Txt_Valor.Text)
-         && !string.IsNullOrWhiteSpace(Txt_idade.Text) && !string.IsNullOrWhiteSpace(Txt_mes_Nasc.Text)
-         && int.TryParse(Txt_idade.Text, out int idade) && idade >= 18 && idade <= 120
-         && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && double.TryParse(Txt_Valor.Text, out double valor) && mes_nascimento > 0 && mes_nascimento <= 12)
+         && !string.IsNullOrWhiteSpace(Txt_idadeBanco.Text) && !string.IsNullOrWhiteSpace(Txt_Mes_Nasc_Banco.Text)
+         && int.TryParse(Txt_idadeBanco.Text, out int idade) && idade >= 18 && idade <= 120
+         && int.TryParse(Txt_Mes_Nasc_Banco.Text, out int mes_nascimento) && double.TryParse(Txt_Valor.Text, out double valor) && mes_nascimento > 0 && mes_nascimento <= 12)
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
                 conta.numero_conta = int.Parse(Txt_NConta.Text);
                 conta.TitularConta = Txt_TitularConta.Text;
                 conta.valor = double.Parse(Txt_Valor.Text);
-                conta.idade = int.Parse(Txt_idade.Text);
-                conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
+                conta.idade = int.Parse(Txt_idadeBanco.Text);
+                conta.mes_nascimento = int.Parse(Txt_Mes_Nasc_Banco.Text);
 
                 if (conta.saldo >= conta.valor)
                 {
@@ -63,8 +92,8 @@ namespace Projeto_Banco
                     Txt_NConta.Enabled = false;
                     Txt_TitularConta.Enabled = false;
                     Txt_Valor.Enabled = true;
-                    Txt_idade.Enabled = false;
-                    Txt_mes_Nasc.Enabled = false;
+                    Txt_idadeBanco.Enabled = false;
+                    Txt_Mes_Nasc_Banco.Enabled = false;
 
                     Txt_Valor.Focus();
                 }
@@ -86,16 +115,16 @@ namespace Projeto_Banco
         {
             if (Txt_Agencia.TextLength == 4 && Txt_NConta.TextLength == 5
          && Txt_TitularConta.TextLength >= 3 && !string.IsNullOrWhiteSpace(Txt_Valor.Text)
-         && !string.IsNullOrWhiteSpace(Txt_idade.Text) && !string.IsNullOrWhiteSpace(Txt_mes_Nasc.Text)
-         && int.TryParse(Txt_idade.Text, out int idade) && idade >= 18 && idade <= 120
-         && int.TryParse(Txt_mes_Nasc.Text, out int mes_nascimento) && mes_nascimento > 0 && mes_nascimento <= 12)
+         && !string.IsNullOrWhiteSpace(Txt_idadeBanco.Text) && !string.IsNullOrWhiteSpace(Txt_Mes_Nasc_Banco.Text)
+         && int.TryParse(Txt_idadeBanco.Text, out int idade) && idade >= 18 && idade <= 120
+         && int.TryParse(Txt_Mes_Nasc_Banco.Text, out int mes_nascimento) && mes_nascimento > 0 && mes_nascimento <= 12)
             {
                 conta.agencia = int.Parse(Txt_Agencia.Text);
                 conta.numero_conta = int.Parse(Txt_NConta.Text);
                 conta.TitularConta = Txt_TitularConta.Text;
                 conta.valor = double.Parse(Txt_Valor.Text);
-                conta.idade = int.Parse(Txt_idade.Text);
-                conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
+                conta.idade = int.Parse(Txt_idadeBanco.Text);
+                conta.mes_nascimento = int.Parse(Txt_Mes_Nasc_Banco.Text);
 
                 conta.valor = double.Parse(Txt_Valor.Text);
                 conta.depositar();
@@ -108,8 +137,8 @@ namespace Projeto_Banco
                 Txt_NConta.Enabled = false;
                 Txt_TitularConta.Enabled = false;
                 Txt_Valor.Enabled = true;
-                Txt_idade.Enabled = false;
-                Txt_mes_Nasc.Enabled = false;
+                Txt_idadeBanco.Enabled = false;
+                Txt_Mes_Nasc_Banco.Enabled = false;
 
                 Txt_Valor.Focus();
             }
@@ -179,7 +208,7 @@ namespace Projeto_Banco
 
                 if (Txt_TitularConta.TextLength >= 3)
                 {
-                    Txt_idade.Focus();
+                    Txt_idadeBanco.Focus();
                 }
                 else
                 {
@@ -221,20 +250,20 @@ namespace Projeto_Banco
 
             if (e.KeyChar == 13)
             {
-                if (Txt_idade.Text != "")
+                if (Txt_idadeBanco.Text != "")
                 {
-                    conta.idade = int.Parse(Txt_idade.Text);
+                    conta.idade = int.Parse(Txt_idadeBanco.Text);
 
                     if (conta.idade >= 18 && conta.idade<=120)
                     {
-                        Txt_mes_Nasc.Focus();
+                        Txt_Mes_Nasc_Banco.Focus();
                     }
                     else
                     {
                         MessageBox.Show($"'{conta.idade}'anos. Idade incorreta, precisa " +
                             $"ter maioridade, até 120 amos ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Txt_idade.Clear();
-                        Txt_idade.Focus();
+                        Txt_idadeBanco.Clear();
+                        Txt_idadeBanco.Focus();
                     }
 
                 }
@@ -285,8 +314,8 @@ namespace Projeto_Banco
 
             if (e.KeyChar == 13)//condição para tclar o "enter"
             {
-                conta.mes_nascimento = int.Parse(Txt_mes_Nasc.Text);
-                if (Txt_mes_Nasc.Text != "")//condição para verificar se o campo esta vazio
+                conta.mes_nascimento = int.Parse(Txt_Mes_Nasc_Banco.Text);
+                if (Txt_Mes_Nasc_Banco.Text != "")//condição para verificar se o campo esta vazio
                 {
                     if (conta.mes_nascimento > 0 && conta.mes_nascimento < 13)
                     {

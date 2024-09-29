@@ -154,7 +154,7 @@ namespace Projeto_Banco
 
         private void Btn_Voltar_Click(object sender, EventArgs e)
         {
-            Frm_Login login                 = new Frm_Login();
+            Frm_Login login = new Frm_Login();
             login.Show();
             Hide();
         }

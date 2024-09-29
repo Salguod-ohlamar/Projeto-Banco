@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -8,7 +9,7 @@ namespace Projeto_Banco
 
     internal class Conta_Bancaria
     {
-        public int agencia, numero_conta, idade, mes_nascimento, mes;
+        public int agencia, numero_conta, idade, mes_nascimento, id;
         public double valor, saldo, invetimento;
         public string TitularConta, email, senha;
 
@@ -45,6 +46,13 @@ namespace Projeto_Banco
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern);
         }
+        
+        }
+
+
     }
-}
+
+
+
+
 
